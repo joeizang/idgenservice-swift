@@ -15,6 +15,8 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.6.0"),
         // 🔵 Non-blocking, event-driven networking for Swift. Used for custom executors
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
+        // ULID library for generating truly random non Int or long ids
+        .package(url: "https://github.com/yaslab/ULID.swift.git", from: "1.3.1"),
     ],
     targets: [
         .executableTarget(
@@ -25,6 +27,7 @@ let package = Package(
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
+                .product(name: "ULID", package: "ULID.swift")
             ],
             swiftSettings: swiftSettings
         ),

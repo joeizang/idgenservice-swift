@@ -19,19 +19,19 @@ final class IdsGenerated: Model {
     @Field(key: "requestedId")
     var requestedId: String
 
-    @Field(key: "createdOn")
+    @Timestamp(key: "createdOn", on: .create)
     var createdOn: Date?
 
     init(){}
 
     init(
-        genId: UUID,
+        genId: UUID?,
         serverName: String,
         serverIp: String,
         ulidId: String,
         requestedId: String
     ) {
-        self.id = genId
+        self.id = genId ?? UUID()
         self.serverName = serverName
         self.serverIp = serverIp
         self.ulidId = ulidId
